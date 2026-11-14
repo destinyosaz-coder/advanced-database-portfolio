@@ -1,0 +1,80 @@
+=== CREATE: register a new patient with a first visit ===
+
+=== READ 1: find the patient (whole history in ONE read, no joins) ===
+{
+  _id: ObjectId('6af8d29d63515fb01a23e10a'),
+  patientId: 900001,
+  firstName: 'Destiny',
+  lastName: 'Demo',
+  dob: ISODate('1995-03-15T00:00:00.000Z'),
+  gender: 'F',
+  contact: {
+    phone: '08031234567',
+    email: 'demo@mail.example',
+    address: '12 Marina Road, Lagos'
+  },
+  visits: [
+    {
+      visitId: 900001,
+      date: ISODate('2025-01-10T09:00:00.000Z'),
+      status: 'COMPLETED',
+      reason: 'Fever',
+      doctor: {
+        id: 1,
+        name: 'Dr Adeyemi',
+        department: 'General Medicine'
+      },
+      diagnoses: [
+        {
+          icd: 'B54',
+          description: 'Unspecified malaria'
+        }
+      ],
+      prescriptions: [
+        {
+          medication: 'Artemether-Lumefantrine',
+          dosage: '4 tablets twice daily',
+          days: 3
+        }
+      ],
+      labResults: [
+        {
+          test: 'Malaria parasite',
+          result: 'Positive'
+        }
+      ]
+    }
+  ]
+}
+
+=== READ 2: patients with a COMPLETED malaria diagnosis (nested query), first 3 ===
+{
+  patientId: 2,
+  firstName: 'Yusuf',
+  lastName: 'Lawal'
+}
+{
+  patientId: 9,
+  firstName: 'Kehinde',
+  lastName: 'Lawal'
+}
+{
+  patientId: 21,
+  firstName: 'Tunde',
+  lastName: 'Musa'
+}
+
+=== UPDATE 1: add a new visit with $push (no extra table or join) ===
+Visits now: 2
+
+=== UPDATE 2: change the phone number with $set ===
+New phone: 08099999999
+
+=== VALIDATION: try to insert an invalid gender (should be rejected) ===
+Rejected as expected: Document failed validation
+
+=== DELETE: remove the demo patient ===
+{
+  acknowledged: true,
+  deletedCount: 1
+}

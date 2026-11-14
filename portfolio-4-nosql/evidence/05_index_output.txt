@@ -1,0 +1,6 @@
+--- BEFORE indexes ---
+Find by last name -> COLLSCAN (full scan) | docsExamined=5000 | returned=415 | time=11 ms
+Find by doctor id inside visits -> COLLSCAN (full scan) | docsExamined=5000 | returned=875 | time=11 ms
+--- AFTER indexes ---
+Find by last name -> IXSCAN (index used) | docsExamined=415 | returned=415 | time=29 ms
+Find by doctor id inside visits -> IXSCAN (index used) | docsExamined=875 | returned=875 | time=29 ms

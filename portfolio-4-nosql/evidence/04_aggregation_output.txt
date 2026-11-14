@@ -1,0 +1,149 @@
+=== AGG 1: completed visits per department ===
+{
+  _id: 'Surgery',
+  completedVisits: 2347
+}
+{
+  _id: 'Laboratory & Diagnostics',
+  completedVisits: 2307
+}
+{
+  _id: 'General Medicine',
+  completedVisits: 2261
+}
+{
+  _id: 'Obstetrics & Gynaecology',
+  completedVisits: 2259
+}
+{
+  _id: 'Paediatrics',
+  completedVisits: 2218
+}
+
+=== AGG 2: top 5 diagnoses ===
+{
+  _id: 'General medical examination',
+  cases: 975
+}
+{
+  _id: 'Immunisation encounter',
+  cases: 955
+}
+{
+  _id: 'Essential hypertension',
+  cases: 933
+}
+{
+  _id: 'Unspecified malaria',
+  cases: 932
+}
+{
+  _id: 'Upper respiratory infection',
+  cases: 929
+}
+
+=== AGG 3: appointments per month ===
+{
+  _id: '2024-01',
+  appointments: 1086
+}
+{
+  _id: '2024-02',
+  appointments: 1142
+}
+{
+  _id: '2024-03',
+  appointments: 1076
+}
+{
+  _id: '2024-04',
+  appointments: 1140
+}
+{
+  _id: '2024-05',
+  appointments: 1141
+}
+{
+  _id: '2024-06',
+  appointments: 1009
+}
+{
+  _id: '2024-07',
+  appointments: 1132
+}
+{
+  _id: '2024-08',
+  appointments: 1126
+}
+{
+  _id: '2024-09',
+  appointments: 1096
+}
+{
+  _id: '2024-10',
+  appointments: 1062
+}
+{
+  _id: '2024-11',
+  appointments: 1127
+}
+{
+  _id: '2024-12',
+  appointments: 1098
+}
+{
+  _id: '2025-01',
+  appointments: 1086
+}
+{
+  _id: '2025-02',
+  appointments: 1130
+}
+{
+  _id: '2025-03',
+  appointments: 1179
+}
+{
+  _id: '2025-04',
+  appointments: 1093
+}
+{
+  _id: '2025-05',
+  appointments: 1133
+}
+{
+  _id: '2025-06',
+  appointments: 1082
+}
+
+=== AGG 4: five most frequent patients (by number of visits) ===
+{
+  patientId: 8,
+  firstName: 'Chioma',
+  lastName: 'Nwosu',
+  visitCount: 8
+}
+{
+  patientId: 2,
+  firstName: 'Yusuf',
+  lastName: 'Lawal',
+  visitCount: 8
+}
+{
+  patientId: 21,
+  firstName: 'Tunde',
+  lastName: 'Musa',
+  visitCount: 8
+}
+{
+  patientId: 1,
+  firstName: 'Ifeanyi',
+  lastName: 'Bello',
+  visitCount: 8
+}
+{
+  patientId: 9,
+  firstName: 'Kehinde',
+  lastName: 'Lawal',
+  visitCount: 8
+}
