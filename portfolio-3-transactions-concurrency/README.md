@@ -37,19 +37,6 @@
 
 **5. My choice for the clinic.** I would use READ COMMITTED for work such as booking, because the UNIQUE constraint already helps prevents double bookings, and it results in fewer conflicts. I would use REPEATABLE READ for reports that read several tables and need one consistent picture, such as a monthly summary. The trade-off is that stricter isolation gives more consistency but can cause more waiting or failed transactions that have to be retried.`.
 
-**3. Without the UNIQUE constraint.** Both receptionists would have been able to book the same doctor at the same time, giving a double booking. Checking in application code first ("is the slot free?") is not safe, because both sessions can check at the same moment, both see it free, and both insert. The database constraint closes that gap.
-
-**4. READ COMMITTED vs REPEATABLE READ (Exercise E).** With READ COMMITTED, each statement sees the latest committed data, so when session 2 raised the price and committed, my second read in session 1 showed the new price. This is a non-repeatable read. With REPEATABLE READ, session 1 kept seeing the data as it was when the transaction started, so the price stayed the same until I committed and read again.
-
-**5. My choice for the clinic.** I would use READ COMMITTED for everyday work such as booking, because the UNIQUE constraint already prevents double bookings, and it causes fewer conflicts. I would use REPEATABLE READ for reports that read several tables and need one consistent picture, such as a monthly summary. The trade-off is that stricter isolation gives more consistency but can cause more waiting or failed transactions that have to be retried.
-**2. Why session 2 waited (Exercise D).** Session 1 had inserted the 10:00 booking for doctor 2 but had not committed it, so the outcome was still unknown. If session 1 rolled back, the slot would be free, and if it committed, the slot would be taken. PostgreSQL therefore made session 2 wait. When session 1 committed, session 2 failed with a duplicate key error on `uq_doctor_slot`.
-
-**3. Without the UNIQUE constraint.** Both receptionists would have been able to book the same doctor at the same time, giving a double booking. Checking in application code first ("is the slot free?") is not safe, because both sessions can check at the same moment, both see it free, and both insert. The database constraint closes that gap.
-
-**4. READ COMMITTED vs REPEATABLE READ (Exercise E).** With READ COMMITTED, each statement sees the latest committed data, so when session 2 raised the price and committed, my second read in session 1 showed the new price. This is a non-repeatable read. With REPEATABLE READ, session 1 kept seeing the data as it was when the transaction started, so the price stayed the same until I committed and read again.
-
-**5. My choice for the clinic.** I would use READ COMMITTED for everyday work such as booking, because the UNIQUE constraint already prevents double bookings, and it causes fewer conflicts. I would use REPEATABLE READ for reports that read several tables and need one consistent picture, such as a monthly summary. The trade-off is that stricter isolation gives more consistency but can cause more waiting or failed transactions that have to be retried.
-
 ## 4. Evidence checklist
 - [ ] A: result after COMMIT
 - [ ] B: price before, inside the transaction, after ROLLBACK
